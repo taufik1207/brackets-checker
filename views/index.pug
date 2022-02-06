@@ -1,5 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Cek string "(" dan ")" yang diinput, sudah seimbang atau belum
+
+  if error
+    small.text-red Pesan error: #{error}
+
+  form(action='' method='post')
+    label(for='brackets') Masukkan karakter "(" atau ")": 
+    br
+    textarea#brackets(name='character' rows='4' cols='50' maxlength='100000') #{form != null ? form.character : ''}
+    br
+    small.text-gray *) Jumlah karakter maksimal 100.000
+    br
+    br
+    input(type='submit' value='Submit')
+
+  if result != null
+    h4 Result: #{result}
